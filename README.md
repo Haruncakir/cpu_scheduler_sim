@@ -2,6 +2,8 @@
 
 A browser-based CPU scheduling simulator built with TypeScript and Vite. Demonstrates CPU scheduling algorithms, execution timelines via an interactive Gantt chart, and performance metrics.
 
+**Live Application**: [https://haruncakir.github.io/cpu_scheduler_sim/](https://haruncakir.github.io/cpu_scheduler_sim/)
+
 ---
 
 ## Implemented Scheduling Algorithms
