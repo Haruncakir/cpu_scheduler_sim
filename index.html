@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CPU Scheduling Simulator</title>
+    <script type="module" crossorigin src="/cpu_scheduler_sim/assets/index-CHz5fISh.js"></script>
+    <link rel="stylesheet" crossorigin href="/cpu_scheduler_sim/assets/index-DeMV_RSQ.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="container">
+        <h1>CPU Scheduling Simulator</h1>
+        <p class="subtitle">CSE513 Operating Systems — Assignment 1</p>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Input Section -->
+      <section class="card" aria-labelledby="section-input-heading">
+        <div class="card-header">
+          <h2 id="section-input-heading">Process Workload</h2>
+          <div class="button-group">
+            <button type="button" id="btn-load-a" class="btn btn-secondary">Load Workload A</button>
+            <button type="button" id="btn-load-b" class="btn btn-secondary">Load Workload B</button>
+            <button type="button" id="btn-add-process" class="btn btn-secondary">+ Add Process</button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table" id="process-table" aria-label="Process input list">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 25%;">Process ID</th>
+                <th scope="col" style="width: 25%;">Arrival Time</th>
+                <th scope="col" style="width: 25%;">CPU Burst</th>
+                <th scope="col" style="width: 25%;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="process-tbody">
+              <!-- Dynamically populated rows -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Algorithm Selection & Run -->
+      <section class="card" aria-labelledby="section-config-heading">
+        <h2 id="section-config-heading">Scheduling Algorithm</h2>
+        <form id="config-form" class="config-grid" onsubmit="return false;">
+          <div class="form-field">
+            <label for="algo-select">Algorithm</label>
+            <select id="algo-select" class="form-control">
+              <option value="FCFS">First-Come, First-Served (FCFS)</option>
+              <option value="SJF">Shortest Job First (SJF) — Non-preemptive</option>
+              <option value="SRTF">Shortest Remaining Time First (SRTF) — Preemptive</option>
+              <option value="RR">Round Robin (RR)</option>
+            </select>
+          </div>
+
+          <div class="form-field" id="quantum-field" style="display: none;">
+            <label for="quantum-input">Time Quantum (q)</label>
+            <input
+              type="number"
+              id="quantum-input"
+              class="form-control"
+              min="1"
+              step="1"
+              value="2"
+            />
+          </div>
+
+          <div class="form-field form-field-action">
+            <button type="button" id="btn-run" class="btn btn-primary">Run Simulation</button>
+          </div>
+        </form>
+
+        <div id="validation-errors" class="alert-box alert-error" role="alert" style="display: none;">
+          <!-- Validation errors list -->
+        </div>
+      </section>
+
+      <!-- Results Section -->
+      <section id="results-section" class="card" aria-labelledby="section-results-heading" style="display: none;">
+        <h2 id="section-results-heading">Simulation Results</h2>
+
+        <div class="subsection">
+          <h3>Gantt Chart</h3>
+          <div id="gantt-container"></div>
+        </div>
+
+        <div class="subsection">
+          <h3>Performance Metrics</h3>
+          <div id="metrics-container"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <div class="container">
+        <p>CSE513 Assignment 1: CPU Scheduling Simulator. Non-preemptive and preemptive algorithms model single CPU scheduling.</p>
+      </div>
+    </footer>
+
+  </body>
+</html>
